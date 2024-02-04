@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const IncomeSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true
+    },
+    
     title: {
         type: String,
         required: true,
@@ -38,4 +43,4 @@ const IncomeSchema = new mongoose.Schema({
     }
 },{timestamps: true});
 
-module.exports = mongoose.model('IncomeSchema', IncomeSchema);
+module.exports = mongoose.model('Income', IncomeSchema);
