@@ -8,7 +8,7 @@ const { SECRET = "secretkey" } = process.env.SECRET;
 exports.UserSignUp = async (req, res) => {
 
     try {
-        const { username, password, name } = req.body;
+        const { name, username, password } = req.body;
         const user = await UserModel.findOne({ username });
         if (user) {
             return res.status(400).json({

@@ -8,7 +8,8 @@ require('dotenv').config()
 const PORT = process.env.PORT
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({'origin':'*'}))
+
 
 readdirSync('./routers').map((route) => app.use('/api/v1', require('./routers/' + route)))
 const server = ()=>{
