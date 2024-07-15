@@ -13,10 +13,11 @@ exports.isLoggedIn = async (req, res, next) => {
 
                 const decoded = jwt.verify(token, process.env.SECRET);
 
-                // console.log(decoded)
+                // console.log("this is inside islggedin "+decoded)
                 if (decoded) {
-
+                    
                     req.user = decoded;
+                    // console.log("this is inside islggedin "+ JSON.stringify(req.user))
                     next();
                 }else{
                     res.status(401).json({ message: 'Token Verification Failed' })

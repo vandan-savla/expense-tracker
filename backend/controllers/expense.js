@@ -4,7 +4,7 @@ const ExpenseSchema = require('../models/ExpenseModel');
 exports.addExpense = async (req, res) => {
 
     const expense = new ExpenseSchema({
-        username: req.body.username,
+        username: req.user.username,
 
         title: req.body.title,
         amount: req.body.amount,

@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+// import { AuthContext } from "../../context/AuthContext";
 
 function Dashboard() {
-    
+
   return (
-    <div>Dashboard</div>
-  )
+    <div>
+      <h1>Home</h1>
+      
+      
+    </div>
+  );
 }
 
 export default Dashboard

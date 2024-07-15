@@ -49,12 +49,21 @@ exports.UserSignIn = async (req, res) => {
                 message: "Credentials do not match, Try Again!!!"
             });
         }
-        const token = jwt.sign({ username: user.username,name:user.name }, SECRET);
-
-        res.status(200).json({ token });
+        const token = jwt.sign({ username: user.username, name: user.name }, SECRET, { expiresIn: '1h' });
+        // const userDetails = { username: user.username, name: user.name }
+        res.status(200).json({ token, user });
 
     } catch (e) {
         res.status(500).json({ message: e.message });
         // res.status(500).json({ message: "Internal Server Error" });
+    }
+}
+
+exports.validate = async (req, res) => {
+    //    return;
+    if (!req.user) {
+        return res.status(401).json({ message: "User not logged in " })
+    } else {
+        return res.status(200).json(JSON.stringify(req.user));
     }
 }

@@ -19,9 +19,7 @@ const Signup = () => {
     // setLoading(true);
     try {
       const response = await axios.post('http://localhost:5000/api/v1/sign-up', {
-        // "name": name,
-        // "username":username,
-        // "password": password
+       
         name, username, password
       });
       console.log('Signup successful:', response.data);
@@ -50,11 +48,12 @@ const Signup = () => {
 
         {/* <div> */}
 
-          <form className="form justify-content-center d-flex flex-column flex-wrap p-4 border-1" onSubmit={handleSubmit}>
+          <form className="form justify-content-center d-flex flex-column flex-wrap p-4 border-1" onSubmit={handleSubmit} method='post'>
             <h2 >Sign Up</h2>
             <hr />
+            <span  className='text-bg-danger'>
             {error && <p>{error}</p>}
-            <span> </span>
+            </span>
             <div className="mb-3">
               <label for="email" className="form-label">Email address</label>
               <input
