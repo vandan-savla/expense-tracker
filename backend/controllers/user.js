@@ -50,8 +50,8 @@ exports.UserSignIn = async (req, res) => {
             });
         }
         const token = jwt.sign({ username: user.username, name: user.name }, SECRET, { expiresIn: '1h' });
-        // const userDetails = { username: user.username, name: user.name }
-        res.status(200).json({ token, user });
+        const userDetails = { username: user.username, name: user.name }
+        res.status(200).json({ token, user: userDetails });
 
     } catch (e) {
         res.status(500).json({ message: e.message });
@@ -64,6 +64,6 @@ exports.validate = async (req, res) => {
     if (!req.user) {
         return res.status(401).json({ message: "User not logged in " })
     } else {
-        return res.status(200).json(JSON.stringify(req.user));
+        return res.status(200).json(req.user);
     }
 }

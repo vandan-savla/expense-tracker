@@ -1,10 +1,9 @@
-import React, { useState , useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-// import { AuthContext } from '../../context/AuthContext'
+import { AuthContext } from '../../context/AuthContext'
 function Signin() {
-
-// const {setauthState} = useContext(AuthContext);
+  const { signin } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [username, setusername] = useState('');
@@ -13,33 +12,43 @@ function Signin() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
- 
-    try {
-      const response = await axios.post('http://localhost:5000/api/v1/sign-in', {
-
-        username,
-        password,
-
-      });
-
-      if (response.status === 200) {
-        // Save JWT token to local storage
-        sessionStorage.setItem('token', response.data.token);
-        
-        // isAuthenticated = true;
-       
-        navigate('/');
-      }
-    } catch (error) {
-
-      if (error.response) {
-
-        setError(error.response.data.message);
-      } else {
-        // Something happened in setting up the request that triggered an error
-        setError('An unexpected error occurred. Please try again.');
-      }
+    const result = await signin(username,password)
+    if (result.success) {
+      navigate('/');
     }
+    else{
+      setError(result.message);
+    }
+    // try {
+    //   const response = await axios.post('http://localhost:5000/api/v1/sign-in', {
+
+    //     username,
+    //     password,
+
+    //   });
+
+    //   if (response.status === 200) {
+    //     // Save JWT token to local storage
+    //     sessionStorage.setItem('token', response.data.token);
+    //     setauthState({
+    //       isAuthenticated: true,
+    //       user: response.data.user,
+    //       token: response.data.token
+    //     });
+    //     // isAuthenticated = true;
+
+    //     navigate('/');
+    //   }
+    // } catch (error) {
+
+    //   if (error.response) {
+
+    //     setError(error.response.data.message);
+    //   } else {
+    //     // Something happened in setting up the request that triggered an error
+    //     setError('An unexpected error occurred. Please try again.');
+    //   }
+    // }
   };
 
   return (
@@ -49,7 +58,7 @@ function Signin() {
         {/* <div> */}
 
         <form className="form justify-content-center d-flex flex-column flex-wrap p-4 border-1" onSubmit={handleSubmit} method='post'>
-          <h2 >Sign Up</h2>
+          <h2 >Sign In</h2>
           <hr />
           <span className='text-danger text-capitalize'>
             {error && <p >{error}</p>}
