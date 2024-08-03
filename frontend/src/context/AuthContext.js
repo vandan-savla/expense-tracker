@@ -7,6 +7,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [authState, setauthState] = useState({
         isAuthenticated: false,
+        // isAuthenticated: sessionStorage.getItem('isAuthenticated') || false, 
         user: sessionStorage.getItem('user') || null,
         token: sessionStorage.getItem('token') || null,
         loading: true
@@ -25,6 +26,8 @@ export const AuthProvider = ({ children }) => {
                     }
                 }).then(response => {
                     setauthState({
+
+                        // isAuthenticated: sessionStorage.getItem('isAuthenticated'),
                         isAuthenticated: true,
                         // user: JSON.stringify(response.data),
                         user: response.data,
@@ -36,14 +39,19 @@ export const AuthProvider = ({ children }) => {
                     console.error('Token verification failed:', error);
                     setauthState({
                         isAuthenticated: false,
+                        // isAuthenticated: sessionStorage.getItem('isAuthenticated'),
+
                         user: null,
                         token: null,
                         loading: false
                     });
                 })
+
+            }else{
+                setauthState((prevState) => ({ ...prevState, loading: false }));
             }
         }
-        console.log(authState.user.name);
+        // console.log(authState.user.name);
         verify();
     }, [])
 
@@ -58,8 +66,10 @@ export const AuthProvider = ({ children }) => {
                 // Save JWT token to local storage
                 sessionStorage.setItem('token', response.data.token);
                 sessionStorage.setItem('user', JSON.stringify(response.data.user));
+                // sessionStorage.setItem('isAuthenticated', "true");
                 setauthState({
                     isAuthenticated: true,
+                    // isAuthenticated: sessionStorage.getItem("isAuthenticated"),
                     user: response.data.user,
                     token: response.data.token,
                     loading: false
@@ -70,7 +80,7 @@ export const AuthProvider = ({ children }) => {
             }
         } catch (error) {
             setauthState({
-                isAuthenticated: true,
+                isAuthenticated: false,
                 user: null,
                 token: null,
                 loading: false
@@ -91,6 +101,7 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('user');
+        // sessionStorage.removeItem('isAuthenticated');
         setauthState({
             isAuthenticated: false,
             user: null,

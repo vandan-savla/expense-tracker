@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 function Profile() {
   const { isAuthenticated, user,loading } = useContext(AuthContext)
-  console.log(useContext(AuthContext))
+  // console.log(useContext(AuthContext))
   if (loading) {
     // console.log('l')
     return <h1>Loading...</h1>

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext'
 function Signin() {
@@ -86,8 +86,9 @@ function Signin() {
             <button type="submit" className="w-50 btn btn-primary" >
               Sign In
             </button>
-
-            <a href="/signup" className='p-3  w-50'> Don't have account? Register</a>
+            {/* <Navigate to = "/signup">Don't have account? Register </Navigate> */}
+            <a className='p-3  w-50'> <Link to = "/signup" >Don't have account? Register </Link> </a>
+            {/* <a href="/signup" className='p-3  w-50'> Don't have account? Register</a> */}
           </div>
 
 

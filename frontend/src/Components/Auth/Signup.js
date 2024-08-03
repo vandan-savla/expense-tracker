@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import {Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 // Import CSS for styling (create this file)
 import './auth-style.css';
 
@@ -86,7 +86,9 @@ const Signup = () => {
             <button type="submit" className="w-50 btn btn-primary" >
               Sign Up
             </button>
-            <a href="/signin" className='p-3  w-50'> Already have account? Login</a>
+            <a className='p-3  w-50'> <Link to = "/signin" >Already have account? Login </Link> </a>
+
+            {/* <a href="/signin" className='p-3  w-50'> Already have account? Login</a> */}
             </div>
 
 
