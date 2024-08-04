@@ -1,10 +1,10 @@
-nav ul li .active {
+ nav ul li .active {
     font-weight: bold;
     color: rgb(255, 66, 66) !important; /* Example active link color */
   }
 
-  li:hover{
-    /* font-weight: bold; */
-    color: rgb(255, 66, 66); /* Example active link color */
+  .nav-link:hover{
+    font-weight: bold;
+    color: rgb(255, 66, 66) !important; /* Example active link color */
 }
   

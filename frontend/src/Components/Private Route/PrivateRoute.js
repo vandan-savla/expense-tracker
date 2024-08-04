@@ -7,7 +7,7 @@ const PrivateRoute = () => {
   const { isAuthenticated, loading } = useContext(AuthContext)
   const location = useLocation();
 
-  console.log(isAuthenticated, loading);
+  // console.log(isAuthenticated, loading);
   if (loading) {
     return <div>Loading...</div>;
   }

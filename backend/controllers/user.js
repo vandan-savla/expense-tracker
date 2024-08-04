@@ -49,7 +49,7 @@ exports.UserSignIn = async (req, res) => {
                 message: "Credentials do not match, Try Again!!!"
             });
         }
-        const token = jwt.sign({ username: user.username, name: user.name }, SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ username: user.username, name: user.name }, SECRET, { expiresIn: '1d' });
         const userDetails = { username: user.username, name: user.name }
         res.status(200).json({ token, user: userDetails });
 
