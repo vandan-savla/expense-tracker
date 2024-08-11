@@ -14,6 +14,7 @@ function Dashboard() {
       return (
         <div>
           <ExpenseChart />
+  
 
         </div>
       )
