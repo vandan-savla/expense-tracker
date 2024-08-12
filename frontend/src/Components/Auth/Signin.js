@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext'
+
+import "./auth-style.css"
 function Signin() {
   const { signin } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -19,36 +21,7 @@ function Signin() {
     else{
       setError(result.message);
     }
-    // try {
-    //   const response = await axios.post('http://localhost:5000/api/v1/sign-in', {
-
-    //     username,
-    //     password,
-
-    //   });
-
-    //   if (response.status === 200) {
-    //     // Save JWT token to local storage
-    //     sessionStorage.setItem('token', response.data.token);
-    //     setauthState({
-    //       isAuthenticated: true,
-    //       user: response.data.user,
-    //       token: response.data.token
-    //     });
-    //     // isAuthenticated = true;
-
-    //     navigate('/');
-    //   }
-    // } catch (error) {
-
-    //   if (error.response) {
-
-    //     setError(error.response.data.message);
-    //   } else {
-    //     // Something happened in setting up the request that triggered an error
-    //     setError('An unexpected error occurred. Please try again.');
-    //   }
-    // }
+ 
   };
 
   return (

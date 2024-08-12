@@ -9,6 +9,10 @@ import Signup from './Components/Auth/Signup';
 import Profile from './Components/Profile/Profile';
 import { AuthContext } from "./context/AuthContext";
 import Navbar from './Components/Navbar/Navbar';
+import AddExpense from './Components/Expenses/AddExpense';
+import AddIncome from './Components/Income/AddIncome';
+import AllExpenses from './Components/Expenses/AllExpenses';
+import AllIncomes from './Components/Income/AllIncomes';
 // import AuthPage from './Components/Auth/AuthPage';
 
 function App() {
@@ -33,6 +37,11 @@ function App() {
 
           <Route exact path="/" element={<Dashboard />} />
           <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/add-income" element={<AddIncome />} />
+          <Route exact path="/add-expenses" element={<AddExpense />} />
+          <Route exact path="/expenses" element={<AllExpenses />} />
+          <Route exact path="/incomes" element={<AllIncomes />} />
+          {/* <Route exact path="/" element={<Profile />} /> */}
 
 
         </Route>

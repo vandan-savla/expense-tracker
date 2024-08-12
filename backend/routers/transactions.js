@@ -1,8 +1,8 @@
-const { addExpense, getExpenses, updateExpense,deleteExpense } = require('../controllers/expense');
-const { addIncome, getIncomes, updateIncome,deleteIncome } = require('../controllers/income');
+const { addExpense, getExpenses, updateExpense, deleteExpense } = require('../controllers/expense');
+const { addIncome, getIncomes, updateIncome, deleteIncome } = require('../controllers/income');
 // const Validate = require('../controllers/validate');
-const {UserSignUp,UserSignIn,validate } = require('../controllers/user');
-const {isLoggedIn} = require('../controllers/middleware');
+const { UserSignUp, UserSignIn, validate, updateUserDetails } = require('../controllers/user');
+const { isLoggedIn } = require('../controllers/middleware');
 const router = require('express').Router();
 
 
@@ -12,11 +12,13 @@ router.post('/add-income', isLoggedIn, addIncome)
     .put('/update-income/:id', isLoggedIn, updateIncome)
     .delete('/delete-income/:id', isLoggedIn, deleteIncome)
     .post('/add-expense', isLoggedIn, addExpense)
-    .get('/get-expenses', isLoggedIn, getExpenses) 
+    .get('/get-expenses', isLoggedIn, getExpenses)
     // .get('/get-expenses', getExpenses)
     .put('/update-expense/:id', isLoggedIn, updateExpense)
     .delete('/delete-expense/:id', isLoggedIn, deleteExpense)
     .post('/sign-up', UserSignUp)
     .post('/sign-in', UserSignIn)
-    .get('/validate',isLoggedIn,validate)
+    .get('/validate', isLoggedIn, validate)
+    .put('/update-user-details', isLoggedIn , updateUserDetails);
+    // .put('/update-user-details', validate , updateUserDetails);
 module.exports = router;

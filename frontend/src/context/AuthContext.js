@@ -8,7 +8,8 @@ export const AuthProvider = ({ children }) => {
     const [authState, setauthState] = useState({
         isAuthenticated: false,
         // isAuthenticated: sessionStorage.getItem('isAuthenticated') || false, 
-        user: sessionStorage.getItem('user') || null,
+        // user: sessionStorage.getItem('user') || null,
+        user:  null,
         token: sessionStorage.getItem('token') || null,
         loading: true
     })
@@ -65,7 +66,7 @@ export const AuthProvider = ({ children }) => {
             if (response.status === 200) {
                 // Save JWT token to local storage
                 sessionStorage.setItem('token', response.data.token);
-                sessionStorage.setItem('user', JSON.stringify(response.data.user));
+                // sessionStorage.setItem('user', JSON.stringify(response.data.user));
                 // sessionStorage.setItem('isAuthenticated', "true");
                 setauthState({
                     isAuthenticated: true,

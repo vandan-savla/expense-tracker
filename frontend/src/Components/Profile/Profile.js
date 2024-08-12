@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
 import { AuthContext } from "../../context/AuthContext";
+import ProfileForm from './ProfileForm';
 
 function Profile() {
-  const { isAuthenticated, user,loading } = useContext(AuthContext)
+  const { isAuthenticated, user, loading } = useContext(AuthContext)
   // console.log(useContext(AuthContext))
   if (loading) {
     // console.log('l')
@@ -11,7 +12,7 @@ function Profile() {
     if (user && isAuthenticated) {
       return (
         <div>
-          <h1>Welcome, {user.name} to Profile</h1>
+          <ProfileForm />
         </div>
       )
     }

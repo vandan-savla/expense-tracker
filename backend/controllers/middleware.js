@@ -13,7 +13,7 @@ exports.isLoggedIn = async (req, res, next) => {
 
                 const decoded = jwt.verify(token, process.env.SECRET);
 
-                // console.log("this is inside islggedin "+decoded)
+                console.log("this is inside islggedin "+JSON.stringify(decoded))
                 if (decoded) {
                     
                     req.user = decoded;

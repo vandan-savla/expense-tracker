@@ -19,6 +19,18 @@ function NavbarTemplate() {
                             <NavLink className={ ({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}  aria-current="page" to="/">Dashboard</NavLink>
                         </li>
                         <li className="nav-item">
+                            <NavLink className={ ({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} aria-current="page" to="/add-income">Add Income</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className={ ({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} aria-current="page" to="/add-expenses">Add Expenses</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className={ ({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} aria-current="page" to="/expenses">All Expenses</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className={ ({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} aria-current="page" to="/incomes">All Incomes</NavLink>
+                        </li>
+                        <li className="nav-item">
                             <NavLink className={ ({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} aria-current="page" to="/profile">Profile</NavLink>
                         </li>
 

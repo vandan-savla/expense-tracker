@@ -7,8 +7,8 @@ function ExpenseChart() {
     const { token, loading } = useContext(AuthContext)
 
 
-    const [categoryData, setCategoryData] = useState([]);
-    const [timeData, setTimeData] = useState([]);
+    const [categoryData, setCategoryData] = useState(null);
+    const [timeData, setTimeData] = useState(0);
 
 
 
@@ -24,6 +24,8 @@ function ExpenseChart() {
                         'Authorization': `Bearer ${token}`
                     }
                 })
+               
+
                 const rawData = response.data;
                 
                 const categoryMap = new Map();

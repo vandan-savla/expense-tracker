@@ -14,7 +14,7 @@ exports.addIncome = async (req, res) => {
     });
 
     try {
-        console.log(req.user);
+        console.log("inside add income " + JSON.stringify(req.user));
         if (!income.title || !income.amount || !income.date || !income.category) {
             res.status(400).json({ message: 'Please enter all the fields' });
         }
