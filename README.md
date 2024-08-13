@@ -1,4 +1,4 @@
-#A simple fully functional expense tracker app using MERN stack
+# A simple fully functional expense tracker app using MERN stack
 
 ## Features:
 - Track and manage expenses
