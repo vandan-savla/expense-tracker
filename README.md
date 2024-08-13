@@ -34,7 +34,7 @@
       docker-compose up --build
        ```
   ### To run without docker
-   1. **Clone the Repository**
+  1. **Clone the Repository**
   
      ```
      git clone https://github.com/vandan-savla/expense-tracker.git
@@ -49,15 +49,15 @@
      npm install
      
      ```
-  4. **Configure Env**:
+  3. **Configure Env**:
      - Properly configure the .env by looking at the reference from file .env.local in /backend folder
        
-  6. **Mongo Configuration**:
+  4. **Mongo Configuration**:
      
      - Make the database 'expense-tracker' in mongo-db atlas.
      - Configure network by allowing your IP from the mongo-atlas.
        
-  8. **Run Backend and frontend**:
+  5. **Run Backend and frontend**:
      - Run both in different terminals by using below command.
      ```
      npm start
