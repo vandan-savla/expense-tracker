@@ -26,6 +26,10 @@
   
      ```
      git clone https://github.com/vandan-savla/expense-tracker.git
-     cd expense-tracker ```
+     cd expense-tracker
+     ```
   2. **Build and Run the Docker Containers**:
-       ``` docker-compose up --build```
+     
+       ```
+      docker-compose up --build
+       ```
