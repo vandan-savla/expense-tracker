@@ -1,4 +1,4 @@
-A simple fully functional expense tracker app using MERN stack
+#A simple fully functional expense tracker app using MERN stack
 
 ## Features:
 - Track and manage expenses
@@ -12,19 +12,19 @@ A simple fully functional expense tracker app using MERN stack
 - **Backend:** Node.js, Express.js, MongoDB
 - **Authentication:** JWT
 - **Containerization:** Docker
-  ## Getting Started
+## Getting Started
 
-### Prerequisites
-
-- Docker
-- Docker Compose
-
-### Installation
-
-1. **Clone the Repository**
-
-   ```
-   git clone https://github.com/vandan-savla/expense-tracker.git
-   cd expense-tracker ```
-2. **Build and Run the Docker Containers**:
-     ``` docker-compose up --build```
+  ### Prerequisites
+  
+  - Docker
+  - Docker Compose
+  
+  ### Installation
+  
+  1. **Clone the Repository**
+  
+     ```
+     git clone https://github.com/vandan-savla/expense-tracker.git
+     cd expense-tracker ```
+  2. **Build and Run the Docker Containers**:
+       ``` docker-compose up --build```
