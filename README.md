@@ -1,17 +1,18 @@
 # A simple fully functional expense tracker app using MERN stack
 
 ## Features:
-- Track and manage expenses
-- View expenses in tabular and chart formats
-- Add, update, and delete expenses
-- User authentication and authorization
+- Track and manage expenses and income
+- View expenses and income in tabular and chart formats
+- Add, update, and delete expenses and incomes
+- User authentication and authorization with global auth state preventing risks of Session Hijacking, Replay Attacks and Token Tampering.
 
 ## Tech Stack
 
-- **Frontend:** React, React Hooks, React Google Charts
+- **Frontend:** React, React Google Charts, Bootstrap
 - **Backend:** Node.js, Express.js, MongoDB
 - **Authentication:** JWT
 - **Containerization:** Docker
+
 ## Getting Started
 
   ### Prerequisites
