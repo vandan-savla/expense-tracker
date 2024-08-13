@@ -58,7 +58,7 @@
      - Configure network by allowing your IP from the mongo-atlas.
        
   5. **Run Backend and frontend**:
-     - Run both in different terminals by using below command.
+     - Run both in separate terminals by using below command.
      ```
      npm start
      ```
