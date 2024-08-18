@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main # or your deployment branch
-
+  workflow_dispatch:
 jobs:
   build-and-deploy:
     runs-on: self-hosted
@@ -18,13 +18,12 @@ jobs:
       - name: Build backend image
         run: docker build -t vdsavla21/expense-tracker-backend ./backend
 
-      - name: 'Create env file'
+      - name: "Create env file"
         run: |
           touch ./backend/.env
           echo SECRET=${{ secrets.SECRET }} >> ./backend/.env
           echo MONGODB_URL=${{ secrets.MONGO_DB_URL }} >> ./backend/.env
           echo PORT=${{ secrets.PORT }} >> ./backend/.env
-          
 
       - name: Publish Image to docker hub
         run: docker push vdsavla21/expense-tracker-backend:latest
@@ -34,8 +33,7 @@ jobs:
 
       - name: Publish Image to docker hub
         run: docker push vdsavla21/expense-tracker-frontend:latest
-      
-      
+
       - name: Deploy to EC2
         run: |
           # Pull the latest images
@@ -49,7 +47,7 @@ jobs:
           docker rm expense-tracker-backend || true
 
           # Run the new containers
-          
+
 
           docker run -d --name expense-tracker-backend \
             -p 5000:5000 \
