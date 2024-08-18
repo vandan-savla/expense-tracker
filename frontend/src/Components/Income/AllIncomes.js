@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import DataTable from 'react-data-table-component';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import config from '../../assets/config'
 
 const IncomesPage = () => {
   const { token,loading } = useContext(AuthContext);
@@ -22,7 +23,7 @@ const IncomesPage = () => {
   useEffect(() => {
     const fetchIncomes = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/get-Incomes", {
+        const response = await axios.get(`${config.BASE_URL}api/v1/get-Incomes`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         setIncomes(response.data);
@@ -43,7 +44,7 @@ const IncomesPage = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this Income?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/v1/delete-income/${id}`, {
+        await axios.delete(`${config.BASE_URL}api/v1/delete-income/${id}`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         setIncomes(Incomes.filter(Income => Income._id !== id));
@@ -62,7 +63,7 @@ const IncomesPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/v1/update-income/${selectedIncome}`, formData, {
+      await axios.put(`${config.BASE_URL}api/v1/update-income/${selectedIncome}`, formData, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       setIncomes(Incomes.map(Income => Income._id === selectedIncome ? { ...Income, ...formData } : Income));

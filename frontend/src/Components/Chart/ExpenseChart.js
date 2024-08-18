@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Chart } from 'react-google-charts';
 import axios from 'axios';
 import { AuthContext } from "../../context/AuthContext";
+import config from '../../assets/config'
 
 function ExpenseChart() {
     const { token, loading } = useContext(AuthContext)
@@ -10,7 +11,7 @@ function ExpenseChart() {
     const [categoryData, setCategoryData] = useState(null);
     const [timeData, setTimeData] = useState(0);
 
-
+console.log(`${config.BASE_URL}`)
 
 
     // console.log("chart " + token)
@@ -19,7 +20,7 @@ function ExpenseChart() {
         const fetchExpenses = async () => {
             try {
                 // console.log("chart " + loading)
-                const response = await axios.get("http://localhost:5000/api/v1/get-expenses", {
+                const response = await axios.get(`${config.BASE_URL}api/v1/get-expenses`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }

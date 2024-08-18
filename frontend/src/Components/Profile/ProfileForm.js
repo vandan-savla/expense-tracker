@@ -4,6 +4,8 @@ import { AuthContext } from "../../context/AuthContext";
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import "../Auth/auth-style.css"
+import config from '../../assets/config'
+
 function ProfileForm() {
 
     const { token, loading, user } = useContext(AuthContext);
@@ -31,7 +33,7 @@ function ProfileForm() {
     const handleSave = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.put("http://localhost:5000/api/v1/update-user-details", userData, {
+            const response = await axios.put(`${config.BASE_URL}api/v1/update-user-details`, userData, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
 

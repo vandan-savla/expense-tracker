@@ -3,7 +3,7 @@ import axios from 'axios';
 import {Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 // Import CSS for styling (create this file)
 import './auth-style.css';
-
+import config from '../../assets/config'
 const Signup = () => {
   const navigate = useNavigate(); // Initialize useNavigate
   const [name, setName] = useState('');
@@ -17,8 +17,9 @@ const Signup = () => {
     e.preventDefault();
     console.log(name, username, password);
     // setLoading(true);
+    console.log(`${config.BASE_URL}`)
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/sign-up', {
+      const response = await axios.post(`${config.BASE_URL}api/v1/sign-up`, {
        
         name, username, password
       });

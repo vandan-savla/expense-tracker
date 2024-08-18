@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import DataTable from 'react-data-table-component';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import config from '../../assets/config'
 
 const ExpensesPage = () => {
   const { token } = useContext(AuthContext);
@@ -22,7 +23,7 @@ const ExpensesPage = () => {
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/get-expenses", {
+        const response = await axios.get(`${config.BASE_URL}api/v1/get-expenses`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         // console.log(response.data[0].date
@@ -47,7 +48,7 @@ const ExpensesPage = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this expense?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/v1/delete-expense/${id}`, {
+        await axios.delete(`${config.BASE_URL}api/v1/delete-expense/${id}`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         setExpenses(expenses.filter(expense => expense._id !== id));
@@ -66,7 +67,7 @@ const ExpensesPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/v1/update-expense/${selectedExpense}`, formData, {
+      await axios.put(`${config.BASE_URL}api/v1/update-expense/${selectedExpense}`, formData, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       setExpenses(expenses.map(expense => expense._id === selectedExpense ? { ...expense, ...formData } : expense));

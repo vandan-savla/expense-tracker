@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from "../../context/AuthContext"; // Import your AuthContext
+import config from '../../assets/config'
 
 function AddIncome() {
     const { token } = useContext(AuthContext); // Access the token from context
@@ -22,7 +23,7 @@ function AddIncome() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5000/api/v1/add-income", formData, {
+            const response = await axios.post(`${config.BASE_URL}api/v1/add-income`, formData, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             setSuccess("Income added successfully!");

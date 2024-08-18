@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect, createContext } from 'react';
 import axios from 'axios';
+import config from '../assets/config'
 
 export const AuthContext = createContext();
 
@@ -21,7 +22,9 @@ export const AuthProvider = ({ children }) => {
         const verify =  async () => {
             console.log('inside useEffect '+authState.token);
             if (authState.token) {
-                await axios.get('http://localhost:5000/api/v1/validate', {
+                // await axios.get('http://localhost:5000/api/v1/validate', {
+                await axios.get(`${config.BASE_URL}api/v1/validate`, {
+
                     headers: {
                         'Authorization': `Bearer ${authState.token}`
                     }
@@ -58,7 +61,7 @@ export const AuthProvider = ({ children }) => {
 
     const signin = async (username, password) => {
         try {
-            const response = await axios.post('http://localhost:5000/api/v1/sign-in', {
+            const response = await axios.post(`${config.BASE_URL}api/v1/sign-in`, {
                 username,
                 password,
             });

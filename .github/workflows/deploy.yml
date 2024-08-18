@@ -30,7 +30,7 @@ jobs:
         run: docker push vdsavla21/expense-tracker-backend:latest
 
       - name: Build and push frontend image
-        run: docker build -t vdsavla21/expense-tracker-frontend ./frontend
+        run: docker build -t vdsavla21/expense-tracker-frontend ./frontend --build-arg REACT_APP_NODE_ENV='production' --build-arg REACT_APP_SERVER_BASE_URL='${{ secrets.REACT_APP_SERVER_BASE_URL }}
 
       - name: Publish Image to docker hub
         run: docker push vdsavla21/expense-tracker-frontend:latest
