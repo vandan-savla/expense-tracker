@@ -22,6 +22,8 @@ jobs:
         run: |
           touch ./backend/.env
           echo SECRET=${{ secrets.SECRET }} >> ./backend/.env
+          echo MONGODB_URL=${{ secrets.MONGO_DB_URL }} >> ./backend/.env
+          echo PORT=${{ secrets.PORT }} >> ./backend/.env
           
 
       - name: Publish Image to docker hub
@@ -47,5 +49,13 @@ jobs:
           docker rm expense-tracker-backend || true
 
           # Run the new containers
-          docker run -d --name expense-tracker-backend -p 5000:5000 ${{ secrets.DOCKER_USERNAME }}/expense-tracker-backend:latest
+          
+
+          docker run -d --name expense-tracker-backend \
+            -p 5000:5000 \
+            -e PORT=${{ secrets.PORT }} \
+            -e MONGODB_URL=${{ secrets.MONGO_DB_URL }} \
+            -e SECRET=${{ secrets.SECRET }} \
+            vdsavla21/expense-tracker-backend:latest
+
           docker run -d --name expense-tracker-frontend -p 3000:80 ${{ secrets.DOCKER_USERNAME }}/expense-tracker-frontend:latest

@@ -8,10 +8,6 @@ RUN npm install --silent
 
 
 COPY . .
-# COPY ./.env .
-
-ARG SECRET
-ENV SECRET=${SECRET}
 
 EXPOSE 5000
 
