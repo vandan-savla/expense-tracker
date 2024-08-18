@@ -7,7 +7,7 @@ COPY package*.json ./
 RUN npm install --silent
 
 
-# COPY . .
+COPY . .
 # COPY ./.env .
 
 ARG SECRET
