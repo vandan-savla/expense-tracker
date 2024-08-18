@@ -1,0 +1,45 @@
+name: Deploy Application
+
+on:
+  push:
+    branches:
+      - main # or your deployment branch
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and push backend image
+        run: docker build -t vdsavla21/expense-tracker-backend ./backend
+
+      - name: Publish Image to docker hub
+        run: docker push vdsavla21/expense-tracker-backend:latest
+
+      - name: Build and push frontend image
+        run: docker build -t vdsavla21/expense-tracker-frontend ./frontend
+
+      - name: Publish Image to docker hub
+        run: docker push vdsavla21/expense-tracker-frontend:latest
+      
+      
+      - name: Deploy to EC2
+        run: |
+          # Pull the latest images
+          docker pull ${{ secrets.DOCKER_USERNAME }}/expense-tracker-backend:latest
+          docker pull ${{ secrets.DOCKER_USERNAME }}/expense-tracker-frontend:latest
+
+          # Stop and remove existing containers if they exist
+          docker stop expense-tracker-frontend || true
+          docker stop expense-tracker-backend || true
+          docker rm expense-tracker-frontend || true
+          docker rm expense-tracker-backend || true
+
+          # Run the new containers
+          docker run -d --name expense-tracker-backend -p 5000:5000 ${{ secrets.DOCKER_USERNAME }}/expense-tracker-backend:latest
+          docker run -d --name expense-tracker-frontend -p 80:3000 ${{ secrets.DOCKER_USERNAME }}/expense-tracker-frontend:latest
