@@ -18,6 +18,13 @@ jobs:
       - name: Build backend image
         run: docker build -t vdsavla21/expense-tracker-backend ./backend
 
+      - name: 'Create env file'
+        run: |
+          touch ./backend/.env
+          echo PORT = 5000
+          echo SECRET=${{ secrets.SECRET }} >> ./backend/.env
+          
+
       - name: Publish Image to docker hub
         run: docker push vdsavla21/expense-tracker-backend:latest
 
