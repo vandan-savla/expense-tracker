@@ -1,6 +1,6 @@
-FROM node:18-alpine
+FROM node:18-alpine as build
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY package*.json ./
 
@@ -8,6 +8,12 @@ RUN npm install --silent
 
 COPY . .
 
-EXPOSE 3000
+RUN npm run build
 
-CMD ["npm","start"]
+
+FROM nginx:1.23-alpine
+WORKDIR /usr/share/nginx/html
+RUN rm -rf *
+COPY --from=build /app/dist .
+EXPOSE 80
+ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
