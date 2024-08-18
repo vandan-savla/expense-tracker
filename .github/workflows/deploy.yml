@@ -15,7 +15,7 @@ jobs:
 
       - name: Log in to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - name: Build and push backend image
+      - name: Build backend image
         run: docker build -t vdsavla21/expense-tracker-backend ./backend
 
       - name: Publish Image to docker hub
