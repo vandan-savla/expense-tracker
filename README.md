@@ -62,3 +62,5 @@
      ```
      npm start
      ```
+## NOTE: 
+   - I have created the workflow just keep in mind to change the path which are making API calls to backend to resolve CORS error on ec2.
