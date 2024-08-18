@@ -6,7 +6,11 @@ COPY package*.json ./
 
 RUN npm install --silent
 
+
 COPY . .
+COPY ./.env .
+
+
 
 EXPOSE 5000
 

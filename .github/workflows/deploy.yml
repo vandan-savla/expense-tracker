@@ -18,7 +18,7 @@ jobs:
       - name: Build backend image
         run: docker build -t vdsavla21/expense-tracker-backend ./backend
 
-      - name: 'Create env file'
+      # - name: 'Create env file'
         run: |
           touch ./backend/.env
           echo PORT = 5000
