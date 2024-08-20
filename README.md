@@ -14,7 +14,7 @@
 - **Containerization:** Docker
 
 ## Architecture Diagram
-  <img src="MERN Stack code pipeline.jpeg" width="720" height="560"/>
+  <img src="MERN Stack code pipeline.jpeg" width="1080" height="480"/>
   
 
 ## Getting Started
