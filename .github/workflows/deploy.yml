@@ -5,6 +5,8 @@ on:
     branches:
       - main # or your deployment branch
   workflow_dispatch:
+  paths-ignore: 
+      - 'README.md'
 jobs:
   build-and-deploy:
     runs-on: self-hosted
