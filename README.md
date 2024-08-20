@@ -14,7 +14,7 @@
 - **Containerization:** Docker
 
 ## Architecture Diagram
-  <img src="ERN Stack code pipeline.png" width="128"/>
+  <img src="MERN Stack code pipeline.png" width="128"/>
   
 
 ## Getting Started
