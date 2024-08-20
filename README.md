@@ -13,6 +13,9 @@
 - **Authentication:** JWT
 - **Containerization:** Docker
 
+## Architecture Diagram
+  ![archDiag]('MERN Stack code pipeline.png')
+
 ## Getting Started
 
   ### Prerequisites
