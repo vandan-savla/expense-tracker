@@ -14,7 +14,7 @@
 - **Containerization:** Docker
 
 ## Architecture Diagram
-  ![MERN Stack code pipeline.png](MERN Stack code pipeline.png)
+  ![MERN Stack code pipeline.png](pipeline.png)
 
 ## Getting Started
 
